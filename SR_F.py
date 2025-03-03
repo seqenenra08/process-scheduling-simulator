@@ -1,16 +1,16 @@
 from PLOT import PLOT
 
 class SR_F:
-    _data = []
-    _ready_queue = []
-    _running_queue = []
-    _waiting_queue = []
-    _time_running = 0
-    _segments = []
-    _time_accumulator = 0
 
     def __init__(self, data):
-        self._data = data
+        self._data = data.copy()
+        self._ready_queue = []
+        self._running_queue = []
+        self._waiting_queue = []
+        self._segments = []
+        self._time_running = 0
+        self._time_accumulator = 0
+
     
     def run(self):
         self._get_ready_queue()
@@ -65,3 +65,4 @@ class SR_F:
     def _run_plot(self):
         plot = PLOT(self._segments)
         plot.run()
+        del plot

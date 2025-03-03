@@ -1,14 +1,11 @@
 from PLOT import PLOT   
 
 class RR:
-    _data = []
-    _segments = []
-    _time_accumulator = 0
-    _quantum = 0
-
     def __init__(self, data, quantum):
-        self._data = data
+        self._data = data.copy()
         self._quantum = quantum
+        self._segments = []
+        self._time_accumulator = 0
 
     def run(self):
         self._data.sort(key=lambda x: x[2])
@@ -33,5 +30,4 @@ class RR:
     def _run_plot(self):
         plot = PLOT(self._segments)
         plot.run()
-
-         
+        del plot    
