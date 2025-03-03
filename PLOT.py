@@ -14,7 +14,7 @@ class PLOT:
 
         for i in range(len(self._segments)): 
             if i == 0:
-                lineas.append(((self._segments[i][0], 0), (self._segments[i][1], self._segments[i][0])))
+                lineas.append(((self._segments[i][2], self._segments[i][0]), (self._segments[i][1], self._segments[i][0])))
             else:                            
                 lineas.append(((sum_x, self._segments[i][0]), (self._segments[i][1] + sum_x, self._segments[i][0])))
             sum_x += self._segments[i][1]
