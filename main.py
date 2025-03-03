@@ -1,5 +1,6 @@
 from FIFO import FIFO
 from SR_F import SR_F
+from RR import RR
 
 def run_FIFO(data):
     fifo = FIFO(data)
@@ -15,14 +16,23 @@ def run_SR_F(data):
     sr_f = SR_F(data)
     sr_f.run()
 
-def RR():
-    print("RR")
+def run_RR(data):
+    quantum = int(input("Enter the quantum: "))
+    rr = RR(data, quantum)
+    rr.run()
 
 def input_data():
     data = []
     n = int(input("Enter the number of processes: "))
     for i in range(n):
         data.append([i, int(input(f"Enter the burst time for process {i}: ")), int(input(f"Enter the arrival time for process {i}: "))])
+    return data
+
+def input_data_priority():
+    data = []
+    n = int(input("Enter the number of processes: "))
+    for i in range(n):
+        data.append([i, int(input(f"Enter the burst time for process {i}: ")), int(input(f"Enter the arrival time for process {i}: ")), int(input(f"Enter the priority for process {i}: "))])
     return data
 
 def menu():
@@ -43,7 +53,7 @@ def menu():
     elif choice == 4:
         run_SR_F(input_data())
     elif choice == 5:
-        RR()
+        run_RR(input_data())
     elif choice == 6:
         exit()
     else:

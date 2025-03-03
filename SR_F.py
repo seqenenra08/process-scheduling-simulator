@@ -10,7 +10,7 @@ class SR_F:
     _time_accumulator = 0
 
     def __init__(self, data):
-        self.data = data
+        self._data = data
     
     def run(self):
         self._get_ready_queue()
@@ -20,7 +20,7 @@ class SR_F:
 
 
     def _get_ready_queue(self):
-        self._ready_queue = sorted(self.data, key=lambda x: x[2])
+        self._ready_queue = sorted(self._data, key=lambda x: x[2])
     
     def _get_running_queue(self):
         for process in list(self._waiting_queue):  
@@ -30,7 +30,6 @@ class SR_F:
         
         self._running_queue.sort(key=lambda x: (x[1], x[2]))
 
-    
     def _get_waiting_queue(self):        
         self._waiting_queue = self._ready_queue
 
