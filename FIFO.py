@@ -22,7 +22,6 @@ class FIFO:
             
             self._waiting_times.append(waiting_time)
             self._turnaround_times.append(turnaround_time)
-            print(pid, burst_time, arrival_time)
             self._segments.append([pid, burst_time, arrival_time])
             
             current_time += burst_time
