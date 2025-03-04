@@ -10,18 +10,19 @@ class FIFO:
     def run(self):
         self._data.sort(key=lambda x: x[2])  
         current_time = 0
+
+        while current_time < self._data[0][2]:
+            current_time += 1
         
         for i in range(len(self._data)):
             pid, burst_time, arrival_time = self._data[i]
-            
-            if current_time < arrival_time:
-                current_time = arrival_time
             
             waiting_time = current_time - arrival_time
             turnaround_time = waiting_time + burst_time
             
             self._waiting_times.append(waiting_time)
             self._turnaround_times.append(turnaround_time)
+            print(pid, burst_time, arrival_time)
             self._segments.append([pid, burst_time, arrival_time])
             
             current_time += burst_time
